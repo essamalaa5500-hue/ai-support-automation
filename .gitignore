@@ -1,4 +1,5 @@
 node_modules/
 dev.db*
 .env
-n8n/
+agents/
+.claudes/
