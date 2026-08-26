@@ -246,6 +246,23 @@ app.patch("/tickets/:id/review", verifyWebhook, async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({
+    name: "AI Support Automation",
+    version: "1.0.0",
+    endpoints: {
+      health: "GET /health",
+      analyze: "POST /webhook/analyze",
+      tickets: "GET /tickets",
+      tickets_review: "GET /tickets/review",
+      ticket_close: "PATCH /tickets/:id/close",
+      ticket_assign: "PATCH /tickets/:id/assign",
+      ticket_review: "PATCH /tickets/:id/review",
+    },
+    github: "https://github.com/essamalaa5500-hue/ai-support-automation",
+  });
+});
+
 // Start
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
