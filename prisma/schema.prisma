@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model WebhookLog {
+  id        String   @id @default(cuid())
+  source    String
+  payload   String
+  response  String?
+  status    String   @default("received")
+  duration  Int?
+  createdAt DateTime @default(now())
+}
+
+model Ticket {
+  id          String   @id @default(cuid())
+  message     String
+  intent      String
+  sentiment   String
+  priority    String
+  summary     String
+  reply       String?
+  status      String   @default("open")
+  assignedTo  String?
+  source      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
